@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>code1230</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+	    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
+	    <script src='./data1.js'></script>
+	    <script src='./data2.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet' />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#intro">Home</a></li>
+							<li><a href="#one">Map</a></li>
+							<li><a href="#two">Analysis</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section id="intro" class="wrapper style1 fullscreen fade-up">
+						<div class="inner">
+							<h1>CODE1230 Urban Modelling</h1>
+							<p>High education and High income,<br />
+							For people between the ages of 25 and 34.</p>
+							<ul class="actions">
+								<li><a href="#one" class="button scrolly">Learn more</a></li>
+							</ul>
+						</div>
+					</section>
+
+				<!-- One -->
+					<section id="one" class="wrapper style2 spotlights">
+						<section>
+
+							<div class="content">
+								<div class="inner">
+									<h2>SA1 Introduction</h2>
+									<p>Statistical Areas Level 1 (SA1) are geographical areas built from whole Mesh Blocks and it have generally been designed as the smallest unit for the release of census data.SA1 is designed to identify Aboriginal and Torres Strait Islander communities with an aim to exclude as much of the non-indigenous population as possible.SA1s generally have a population of 200 to 800 persons, and an average population of about 400 persons and are designed to be either a predominantly rural or predominantly urban in character.In the area demarcation,SA1 is designed as a feature of the city and the countryside, with different grades based on population density. In terms of whether the population density per square kilometer exceeds 200, the areas with a population density of more than 200 people per square kilometer are designed to have more large urban facilities such as prisons and defense bases than areas with a population density of less than 200 people per square kilometer. However,there is a zero SA1 situation. Zero SA1 is zero population or nominal population of SA1. They were created to represent large uninhabited areas that are difficult to combine with the densely populated SA1 surrounding them.SA1 is usually connected internally by road transport and has non-spatial SA1 for mobility, offshore, shipping, and no usual address in each state and region. Besides,SA1 is identified by either an 11-bit fully layered code identifier or a truncated 7-bit code identifier consisting of state and territory, SA2 and SA1 identifiers. Since SA1 was established in August 2016 until now, it has been predicted that new code may need to be allocated in the future.</p>
+								</div>
+							</div>
+						</section>
+						<section>
+<div id='map1' style='width: 90%; height: 500px'></div><div class="content">
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYnJlYWtqayIsImEiOiJjam1yZHRwenAwM2s2M2tvNXR6cm9ud24xIn0.MG_E3cZXGMSm6j8mXj_44w';
+var map1 = new mapboxgl.Map({
+    container: 'map1', // container id
+    style: 'mapbox://styles/mapbox/light-v9', // stylesheet location
+    center: [151.004105, -33.813002], // starting position [lng, lat]
+    pitch: 45,
+    bearing: -17.6,
+    zoom: 6 // starting zoom
+});
+map1.on('load',function(){
+    
+    map1.addLayer({
+        "id":"data1",
+        "type": "fill-extrusion",
+        "source":{
+             'type':'geojson',
+             'data':data1
+        },
+           'paint':{
+               'fill-extrusion-color':{
+                   'property':'2016',
+                   "stops":[
+                       [0,'darkgray'],
+                       [50,'#FFC300'],
+                       [100,'#FF5733'],
+                       [200,'#C70039'],
+                       [300,'#900C3F'],
+                       ]
+               },
+               'fill-extrusion-height':{
+                   'property':'diffb',
+                   "stops":[
+                       [0.2,0],
+                       [1,50000]
+                    ]
+               },
+               'fill-extrusion-opacity': 0.8
+           }
+    });
+});
+</script>
+							<div class="content">
+								<div class="inner">
+									<h2>University Graduation</h2>
+									<p>The darker the color in the map, the more people there are in the region in 2016. The higher the height, the higher the growth rate from 2011 to 2016.</p>
+								</div>
+							</div>
+						</section>
+						<section>
+<div id='map2' style='width: 90%; height: 500px'></div><div class="content">
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYnJlYWtqayIsImEiOiJjam1yZHRwenAwM2s2M2tvNXR6cm9ud24xIn0.MG_E3cZXGMSm6j8mXj_44w';
+var map2 = new mapboxgl.Map({
+    container: 'map2', // container id
+    style: 'mapbox://styles/mapbox/light-v9', // stylesheet location
+    center: [151.004105, -33.813002], // starting position [lng, lat]
+    pitch: 45,
+    bearing: -17.6,
+    zoom: 6 // starting zoom
+});
+map2.on('load',function(){
+    
+    map2.addLayer({
+        "id":"data2",
+        "type": "fill-extrusion",
+        "source":{
+            'type':'geojson',
+            'data':data2
+        },
+           'paint':{
+               'fill-extrusion-color':{
+                   'property':'2016c',
+                   "stops":[
+                       [0,'darkgray'],
+                       [20,'#FFC300'],
+                       [50,'#FF5733'],
+                       [100,'#C70039'],
+                       [300,'#900C3F'],
+                       ]
+               },
+               'fill-extrusion-height':{
+                   'property':'2',
+                   "stops":[
+                       [0.1,0],
+                       [0.2,10000],
+                       [0.5,35000],
+                       [1,50000]
+                    ]
+               },
+               'fill-extrusion-opacity': 0.8
+           }
+    });
+});
+</script>
+
+							<div class="content">
+								<div class="inner">
+									<h2>More than two thousand weekly income</h2>
+									<p>The darker the color in the map, the more people there are in the region in 2016. The higher the height, the higher the growth rate from 2011 to 2016.</p>
+								</div>
+							</div>
+						</section>
+					</section>
+                    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+
+				<!-- Two -->
+					<section id="two" class="wrapper style3 fade-up">
+						<div class="inner">
+							<h2>Background</h2>
+							<p>The difference between people with a higher education and those with lower education is not material, but pattern and horizon.The undergraduate students not only receive the knowledge of the university for four years, but also receive the cultivation of the cultural atmosphere in the university for several years.The more they learn, and the higher degree they reach, the more they will be able to analyse the situation fully and rationally from a higher position. The more they are able to make rational choices in their petty and long-term interests. When they step into the society, they will not stop for the small profit in front of them. Their deep thinking supports them to skip the underlying work of making a living, but directly to the creative and constructive field, thus becoming the top few high-income people in this pyramid society.Most people who earn a lot of money have an obsession. Because they want to achieve their goals, they will constantly push themselves and learn. In addition, self-discipline and good interpersonal skills are also standard among high-income people. Highly educated and highly paid people have three things in common: the right market signals, abundant human resources, and strong alumni relationships (social capital). The only thing that highly educated people need to become high-income people is time, and if they have enough time to master these three points, they will enter the ranks of high earners.Higher education and higher income are positively correlated. And with the continuous improvement of educational level, income will also achieve synchronous level crossing.</p>
+							<div class="features">
+								<section>
+									<span class="icon major fa-code"></span>
+									<h3>ANALYSIS1</h3>
+									<p>The latte line roughly shows the socioeconomic division of labor between Sydney's northeast and southwest. The reason for such a large gap in economic development is the uneven distribution of highly educated talents on both sides of the latte industry chain, which leads to the low overall income level in the region.</p>
+								</section>
+								<section>
+									<span class="icon major fa-lock"></span>
+									<h3>ANALYSIS2</h3>
+									<p>According to the latest data from the Australian bureau of statistics, from 2011 to 2016, people in the northeast of the latte line were generally more education rated than those in the southwest. Especially in the central part of the coast the rate of education is the highest. The talent distribution of education in northeast China is spot-like and dense. In the southwest region, the distribution of high-quality talents is sparse, while in the western region, the distribution of highly educated talents is massive, and the education level is relatively low. </p>
+								</section>
+								<section>
+									<span class="icon major fa-cog"></span>
+									<h3>ANALYSIS3</h3>
+									<p>In addition, the number of people in the northeast who earned more than 2,000 over that period was significantly higher than the number in the southwest who earned more than 2,000. Income growth has generally increased across much of the North-East, while in the north-west only a fraction of the region has seen a slow rise in personal income.
+									Thus it can be seen that the more economically developed areas have more highly educated talents; Where the growth rate of college graduates is high, so is the growth rate of high-income people.</p>
+								</section>
+								<section>
+									<span class="icon major fa-desktop"></span>
+									<h3>Latte line1</h3>
+									<p>The latte line runs roughly from Sydney international airport to Parramatta and then to the northwest. This line roughly shows the socio-economic division of labor between the northeast and the southwest of Sydney.
+									The Sydney metropolitan area is large, however, and geographically, work is not evenly distributed. More work is concentrated in the north and east districts, creating problems for long-distance commutes for people living in the west and south districts.</p>
+								</section>
+								<section>
+									<span class="icon major fa-chain"></span>
+									<h3>Latte line2</h3>
+									<p>The 10 poorest places in Australia are either in Queensland or the northern territory, but if the data from SEIFA is analysed by zip code, Claymore near Campbelltown would be Australia's fourth poorest suburb, while new south wales, measured by IRSAD, is the worst.With Ultimo, Chippendale, Redfern, Brisbane CBD, Melbourne CBD and Adelaide CBD zip codes all down more than 800 places on the IRSAD chart since 2006, some downtown areas across the country have been falling rapidly in the rankings.</p>
+								</section>
+								<section>
+									<span class="icon major fa-diamond"></span>
+									<h3>Latte line3</h3>
+									<p>But the reasons for these changes are different from those that have affected suburban transitions over time. Significantly different groups of people live in inner-city areas, with high rates of unemployment and relatively high rates of people with higher incomes.
+									More than 30 per cent of those born in South Africa, China and Malaysia are more likely to live in the advantaged region, while 40 per cent of those born in vietnam-born Australia live in the disadvantaged region.A spokeswoman for ABS said the change in the proportion of these people over time could explain the dramatic change in economic conditions in different regions.</p>
+								</section>
+							</div>
+						</div>
+					</section>
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li></li><li><a href="http://www." title="REFFERENCE" target="_blank">REFFERENCE</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
